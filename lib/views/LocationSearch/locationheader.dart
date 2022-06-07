@@ -26,7 +26,15 @@ class LocationHeader extends WidgetView<LocationSearch, LocationSearchState> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: darkSecondaryText, width: 0.5),
-                borderRadius: BorderRadius.circular(kRadiusLg)
+                borderRadius: BorderRadius.circular(kRadiusLg),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.1),
+                    spreadRadius: 1,
+                    blurRadius: 9,
+                    offset: const Offset(0, -2), // changes position of shadow
+                  ),
+                ]
               ),
               child: Row(
                 children: [

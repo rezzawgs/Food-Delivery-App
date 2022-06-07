@@ -17,24 +17,33 @@ class OtpScreen extends StatefulWidget {
 class OtpScreenState extends State<OtpScreen> {
   late ClassBase b;
 
-  final otp1Controller = TextEditingController(text: "");
-  final otp2Controller = TextEditingController(text: "");
-  final otp3Controller = TextEditingController(text: "");
-  final otp4Controller = TextEditingController(text: "");
+  var otpLength = 4;
+  List<TextEditingController> otpControllers = [];
+  List<FocusNode> otpFocusNodes = [];
 
   @override
   void initState() {
     super.initState();
     b = ClassBase(context);
+    initController();
+  }
+
+  void initController(){
+    otpControllers = [];
+    otpFocusNodes = [];
+    for(var i = 0 ; i < otpLength ; i++){
+      otpControllers.add(TextEditingController(text: ""));
+      otpFocusNodes.add(FocusNode());
+    }
   }
 
 
   @override
   void dispose() {
-    otp1Controller.dispose();
-    otp2Controller.dispose();
-    otp3Controller.dispose();
-    otp4Controller.dispose();
+    for(var i = 0 ; i < otpLength ; i++){
+      otpControllers[i].dispose();
+      otpFocusNodes[i].dispose();
+    }
     super.dispose();
   }
 
